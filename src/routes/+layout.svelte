@@ -7,14 +7,17 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-			<svelte:fragment slot="lead">Tech Tech App</svelte:fragment>
+			<svelte:fragment slot="lead"><a href="/">Tech Tech App</a></svelte:fragment>
 			<svelte:fragment slot="trail">
-				<Avatar
-					src={tamamushiIcon}
-					border="border-4 border-surface-300-600-token hover:!border-primary-500"
-					cursor="cursor-pointer"
-					width="w-12"
-				/>
+				<a href="/users">ユーザー一覧</a>
+				<a href="/my_profile">
+					<Avatar
+						src={tamamushiIcon}
+						border="border-4 border-surface-300-600-token hover:!border-primary-500"
+						cursor="cursor-pointer"
+						width="w-12"
+					/>
+				</a>
 				<LightSwitch />
 			</svelte:fragment>
 		</AppBar>

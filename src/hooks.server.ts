@@ -6,6 +6,9 @@ import GitHub from "@auth/core/providers/github"
 import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
 
 export const auth = SvelteKitAuth({
+   session: {
+    strategy: 'jwt',
+  },
   trustHost: true,
   secret: AUTH_SECRET,
   providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],

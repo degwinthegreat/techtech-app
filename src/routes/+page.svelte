@@ -6,8 +6,7 @@
 			</h1>
 			<p class="mt-6 text-lg leading-8">登録しないと見れないようになってるから登録してみてね！</p>
 			<div class="mt-10 flex items-center justify-center gap-x-6">
-				<a href="/sign_up" class="btn variant-filled">ユーザー登録</a>
-				<a href="/sign_in" class="btn variant-soft">ログイン</a>
+				<a href="/sign_in" class="btn variant-filled-success">ユーザー登録</a>
 			</div>
 		</div>
 	</div>

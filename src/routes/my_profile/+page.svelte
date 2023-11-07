@@ -1,10 +1,10 @@
 <script lang="ts">
   import { InputChip } from "@skeletonlabs/skeleton";
   import tamamushiIcon from '$lib/images/tamamushi_icon.jpg'
+  import { signOut } from '@auth/sveltekit/client'
   let list: string[] = ['現役エンジニア', 'Ruby on Rails', '高知移住組'];
 </script>
 
-<p>ログイン中のユーザー詳細</p>
 <div class="overflow-hidden shadow rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <label class="label px-4 py-5 sm:px-6">
@@ -29,5 +29,6 @@
       <span>🔖タグ</span>
       <InputChip bind:value={list} name="tags" transitions={true} placeholder="..." readonly={true}/>
     </label>
+    <button class="btn variant-filled-error" on:click={signOut}>ログアウト</button>
   </div>
 </div>

@@ -1,0 +1,10 @@
+name = "techtech-app"
+account_id = "8eb861bf4e44d62118b6a2f592fcbbc6"
+
+main = "./.cloudflare/worker.js"
+site.bucket = "./.cloudflare/public"
+
+build.command = "npm run build"
+
+compatibility_date = "2021-11-12"
+workers_dev = true

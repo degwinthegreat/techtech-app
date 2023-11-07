@@ -15,7 +15,7 @@ export const auth = SvelteKitAuth({
 })
 
 const protect=(async ({ event, resolve })=>{
-  const protectedPages=["/my_profile","/users"];
+  const protectedPages=["/users"];
   if(protectedPages.some(s=>event.url.pathname.startsWith(s))){
     const session = await event.locals.getSession();
     if (!session) {

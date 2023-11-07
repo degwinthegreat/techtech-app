@@ -11,7 +11,6 @@ export const auth = SvelteKitAuth({
   providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],
   pages:{
     signIn: '/sign_in',
-    newUser: "/my_profile",
   }
 })
 

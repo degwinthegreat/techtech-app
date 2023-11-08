@@ -11,7 +11,7 @@ export const auth = SvelteKitAuth({
   providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],
 })
 const protect=(async ({ event, resolve })=>{
-  const protectedPages=["/users"];
+  const protectedPages=["/my_profile","/users"];
   if(protectedPages.some(s=>event.url.pathname.startsWith(s))){
     const session = await event.locals.getSession();
     if (!session) {

@@ -18,7 +18,6 @@
  *
  * @module @auth/d1-adapter
  */
-export { up } from "./migrations";
 // all the sqls
 // USER
 export const CREATE_USER_SQL = `INSERT INTO users (id, name, email, emailVerified, image) VALUES (?, ?, ?, ?, ?)`;

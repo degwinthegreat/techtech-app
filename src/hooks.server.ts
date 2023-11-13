@@ -3,7 +3,7 @@ import { sequence } from '@sveltejs/kit/hooks'
 import type { Handle } from '@sveltejs/kit'
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from "@auth/core/providers/github"
-import { D1Adapter, up } from "@auth/d1-adapter"
+import { D1Adapter, up } from "$lib/auth/d1"
 import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
 
 let migrated = false;
@@ -12,6 +12,7 @@ async function migrationHandle({event, resolve}) {
   console.log('呼ばれてる？')
   if(!migrated) {
     try {
+      console.log('呼ばれてる？2')
       await up(event.platform.env.DB)
       migrated = true
     } catch(e:any) {

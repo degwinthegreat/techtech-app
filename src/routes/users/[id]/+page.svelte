@@ -7,23 +7,23 @@
 
 <div class="overflow-hidden shadow rounded-lg">
   <div class="px-4 py-5 sm:px-6">
-    <label class="label px-4 py-5 sm:px-6">
+    <label for="image" class="label px-4 py-5 sm:px-6">
       <span>📸プロフィール画像</span>
       	<div>
           <img class="h-auto max-w-full rounded-lg" src={user.image} alt="">
           <!-- <img class="h-auto max-w-full rounded-lg" src={tamamushiIcon} alt=""> -->
         </div>
-      <input class="input" type="file" />
+      <input id="image" class="input" type="file" />
     </label>
     <hr />
-    <label class="label px-4 py-5 sm:px-6">
+    <label for="name" class="label px-4 py-5 sm:px-6">
       <span>💳表示名</span>
-      <input class="input" type="text" placeholder="表示名" readonly={true} value={user.name} />
+      <input id="name" class="input" type="text" placeholder="表示名" readonly={true} value={user.name} />
     </label>
     <hr />
-    <label class="labe px-4 py-5 sm:px-6">
+    <label for="description" class="labe px-4 py-5 sm:px-6">
       <span>✏️自己紹介</span>
-      <textarea class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={true} value="{user.description}" />
+      <textarea id="description" class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={true} value="{user.description}" />
     </label>
     <hr />
     <!-- TODO -->

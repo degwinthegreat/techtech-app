@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { InputChip } from "@skeletonlabs/skeleton";
+  // import { InputChip } from "@skeletonlabs/skeleton";
   import tamamushiIcon from '$lib/images/tamamushi_icon.jpg'
   import { signOut } from '@auth/sveltekit/client'
-  let list: string[] = ['現役エンジニア', 'Ruby on Rails', '高知移住組'];
-  export let data
 </script>
 
 <div class="overflow-hidden shadow rounded-lg">
@@ -26,10 +24,10 @@
       <textarea class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={true} value="高知に移住してきました！" />
     </label>
     <hr />
-    <label class="label px-4 py-5 sm:px-6">
+    <!-- <label class="label px-4 py-5 sm:px-6">
       <span>🔖タグ</span>
       <InputChip bind:value={list} name="tags" transitions={true} placeholder="..." readonly={true}/>
-    </label>
+    </label> -->
     <button class="btn variant-filled-error" on:click={signOut}>ログアウト</button>
   </div>
 </div>

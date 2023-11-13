@@ -1,0 +1,8 @@
+name = "techtech-app"
+account_id = "8eb861bf4e44d62118b6a2f592fcbbc6"
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "techtech-app-dev"
+database_id = "e5f7563f-3448-4770-8d0c-c1bc5705d0ca"
+preview_database_id = "DB"

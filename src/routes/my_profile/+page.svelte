@@ -3,6 +3,7 @@
   import tamamushiIcon from '$lib/images/tamamushi_icon.jpg'
   import { signOut } from '@auth/sveltekit/client'
   let list: string[] = ['現役エンジニア', 'Ruby on Rails', '高知移住組'];
+  export let data
 </script>
 
 <div class="overflow-hidden shadow rounded-lg">

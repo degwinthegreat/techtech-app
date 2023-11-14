@@ -1,6 +1,5 @@
 <script lang="ts">
-  // import { InputChip } from "@skeletonlabs/skeleton";?
-  // let list: string[] = ['現役エンジニア', 'Ruby on Rails', '高知移住組'];
+  import noImage from '$lib/images/noImage.jpg'
   export let data
   const user = data.user[0]
 </script>
@@ -10,10 +9,13 @@
     <label for="image" class="label px-4 py-5 sm:px-6">
       <span>📸プロフィール画像</span>
       	<div>
-          <img class="h-auto max-w-full rounded-lg" src={user.image} alt="">
-          <!-- <img class="h-auto max-w-full rounded-lg" src={tamamushiIcon} alt=""> -->
+          {#if user.image}
+            <img class="h-auto max-w-full rounded-lg" src={user.image} alt="image">
+          {:else}
+            <img class="h-auto max-w-full rounded-lg" src={noImage} alt="noimage">
+          {/if}
         </div>
-      <input id="image" class="input" type="file" />
+      <input id="image" class="input" type="file" readonly={true} />
     </label>
     <hr />
     <label for="name" class="label px-4 py-5 sm:px-6">

@@ -6,8 +6,8 @@
 	import '@fortawesome/fontawesome-free/css/brands.css';
 	import '@fortawesome/fontawesome-free/css/solid.css';
 	import { AppBar, AppShell, Avatar, LightSwitch } from '@skeletonlabs/skeleton'
-	import tamamushiIcon from '$lib/images/tamamushi_icon.jpg'
 	import { page } from '$app/stores'
+	console.log($page.data.session?.user)
 </script>
 
 <AppShell>
@@ -19,7 +19,7 @@
 					<a href="/users">ユーザー一覧</a>
 					<a href="/my_profile">
 						<Avatar
-							src={tamamushiIcon}
+							src={$page.data.session?.user.image}
 							border="border-4 border-surface-300-600-token hover:!border-primary-500"
 							cursor="cursor-pointer"
 							width="w-12"

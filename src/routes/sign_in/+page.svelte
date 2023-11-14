@@ -15,7 +15,7 @@
   </div>
   <h2 class="h1 text-center">SNSでログイン</h2>
   <div class="logo-cloud bg-initial grid-cols-1 lg:!grid-cols-2 gap-1">
-    <button class="logo-item" on:click={() => signIn('github', { callbackUrl: '/my_profile' })}>
+    <button class="logo-item" on:click={() => signIn('github', { callbackUrl: '/users' })}>
       <span><i class="fa-brands fa-github"></i></span>
       <span>GitHub</span>
     </button>

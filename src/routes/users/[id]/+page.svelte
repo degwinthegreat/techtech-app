@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { signOut } from '@auth/sveltekit/client';
   import noImage from '$lib/images/noImage.jpg'
   export let data
-  const user = data.user[0]
+  const user = data.user
+  const readonly = data.readonly
 </script>
 
 <div class="overflow-hidden shadow rounded-lg">
@@ -15,23 +17,24 @@
             <img class="h-auto max-w-full rounded-lg" src={noImage} alt="noimage">
           {/if}
         </div>
-      <input id="image" class="input" type="file" readonly={true} />
+      <input id="image" class="input" type="file" readonly={readonly} />
     </label>
     <hr />
     <label for="name" class="label px-4 py-5 sm:px-6">
       <span>💳表示名</span>
-      <input id="name" class="input" type="text" placeholder="表示名" readonly={true} value={user.name} />
+      <input id="name" class="input" type="text" placeholder="表示名" readonly={readonly} value={user.name} />
     </label>
     <hr />
     <label for="description" class="labe px-4 py-5 sm:px-6">
       <span>✏️自己紹介</span>
-      <textarea id="description" class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={true} value="{user.description}" />
+      <textarea id="description" class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={readonly} value="{user.description}" />
     </label>
     <hr />
     <!-- TODO -->
     <!-- <label class="label px-4 py-5 sm:px-6">
       <span>🔖タグ</span>
-      <InputChip bind:value={list} name="tags" transitions={true} placeholder="..." readonly={true}/>
+      <InputChip bind:value={list} name="tags" transitions={true} placeholder="..." readonly={readonly}/>
     </label> -->
+    <button class="btn variant-filled-error" on:click={signOut}>ログアウト</button>
   </div>
 </div>

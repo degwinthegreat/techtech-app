@@ -3,7 +3,7 @@ export const load = (async ({ platform, params, locals }) => {
   const { results } = await platform?.env.DB.prepare(
     "SELECT * FROM users WHERE id = ?"
   ).bind(params.id)
-  .all();
+  .run();
 
   const session = await locals.getSession();
   const readonly = results[0].id !== session.user.id
@@ -13,3 +13,17 @@ export const load = (async ({ platform, params, locals }) => {
     readonly,
   }
 })
+
+export const actions = {
+	default: async ({platform, request, params}) => {
+    const data = await request.formData();
+    const name = data.get("name")
+    const description = data.get("description")
+
+    const { results } = await platform.env.DB.prepare(
+      "UPDATE users SET name = ?, description = ? WHERE id = ?"
+    ).bind(name, description, params.id)
+    .all();
+    return results;
+	}
+};

@@ -3,8 +3,9 @@ import { sequence } from '@sveltejs/kit/hooks'
 import type { Handle } from '@sveltejs/kit'
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from "@auth/core/providers/github"
+import Slack from "@auth/core/providers/slack"
 import { D1Adapter } from "$lib/auth/d1"
-import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET } from "$env/static/private"
+import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET, SLACK_CLIENT_ID, SLACK_CLIENT_SECRET } from "$env/static/private"
 
 export const auth = SvelteKitAuth(async (event) => {
   console.log(event.platform?.env.DB)
@@ -12,7 +13,10 @@ export const auth = SvelteKitAuth(async (event) => {
     adapter: D1Adapter(event.platform?.env.DB),
     trustHost: true,
     secret: AUTH_SECRET,
-    providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })],
+    providers: [
+      GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }),
+      Slack({clientId: SLACK_CLIENT_ID, clientSecret: SLACK_CLIENT_SECRET
+  })],
     callbacks: {
       session: async ({ session, user }) => {
         if (session.user) {

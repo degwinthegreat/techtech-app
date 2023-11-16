@@ -19,9 +19,9 @@
       <span><i class="fa-brands fa-github"></i></span>
       <span>GitHub</span>
     </button>
-    <a class="logo-item" href="/#">
-      <span><i class="fa-brands fa-google"></i></span>
-      <span>Google</span>
-    </a>
+    <button class="logo-item" on:click={() => signIn('slack', { callbackUrl: '/users' })}>
+      <span><i class="fa-brands fa-slack"></i></span>
+      <span>Slack</span>
+    </button>
   </div>
 {/if}

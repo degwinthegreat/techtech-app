@@ -15,7 +15,10 @@ export const auth = SvelteKitAuth(async (event) => {
     secret: AUTH_SECRET,
     providers: [
       GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }),
-      Slack({clientId: SLACK_CLIENT_ID, clientSecret: SLACK_CLIENT_SECRET
+      Slack({
+        clientId: SLACK_CLIENT_ID,
+        clientSecret: SLACK_CLIENT_SECRET,
+        checks: ['nonce']
   })],
     callbacks: {
       session: async ({ session, user }) => {

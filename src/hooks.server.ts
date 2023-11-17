@@ -18,7 +18,6 @@ export const auth = SvelteKitAuth(async (event) => {
       Slack({
         clientId: SLACK_CLIENT_ID,
         clientSecret: SLACK_CLIENT_SECRET,
-        checks: ['nonce']
   })],
     callbacks: {
       session: async ({ session, user }) => {

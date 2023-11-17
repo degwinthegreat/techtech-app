@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { enhance, applyAction } from '$app/forms';
   import { signOut } from '@auth/sveltekit/client';
   import noImage from '$lib/images/noImage.jpg'
-  export let data
+  export let data, form, fileName: string
   const user = data.user
   const readonly = data.readonly
 
@@ -10,13 +11,14 @@
 		const file = target.files?.[0];
 
 		if (file) {
+      fileName = crypto.randomUUID() + '.' + file.name.split(".")[1];
 			const getPresignedUrlResponse = await fetch('/api/upload', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					fileName: file.name,
+					fileName: fileName,
 					fileType: file.type
 				})
 			});
@@ -25,7 +27,7 @@
 				console.error('Failed to get presigned URL');
 			}
 
-			const { presignedUrl, objectKey } = await getPresignedUrlResponse.json();
+			const { presignedUrl } = await getPresignedUrlResponse.json();
       const uploadToR2Response = await fetch(presignedUrl, {
 				method: 'PUT',
 				headers: {
@@ -34,7 +36,6 @@
 				body: file
 			});
 
-      console.log("event:", e)
       if (!uploadToR2Response.ok) {
         console.error('Failed to upload file to R2');
       }
@@ -43,13 +44,32 @@
 </script>
 
 <div class="overflow-hidden shadow rounded-lg">
+  {#if form?.success}
+    <aside class="alert variant-ghost">
+        <div><i class="fa-solid fa-check"></i></div>
+        <div class="alert-message">
+            <p>更新しました！</p>
+        </div>
+    </aside>
+  {/if}
   <div class="px-4 py-5 sm:px-6">
-    <form method="POST">
+    <form method="POST" use:enhance={({ formData }) => {
+      if (fileName) {
+        formData.append('fileName', fileName)
+      }
+      return async ({result}) => {
+        await applyAction(result)
+      }
+    }}>
       <label for="image" class="label px-4 py-5 sm:px-6">
         <span>📸プロフィール画像</span>
           <div>
             {#if user.image}
-              <img class="h-auto max-w-full rounded-lg" src={user.image} alt="image">
+              {#if user.image.startsWith("https://")}
+                <img class="h-auto max-w-full rounded-lg" src={user.image} alt="image">
+              {:else}
+                <img class="h-auto max-w-full rounded-lg" src={'https://pub-02e9c1cb43104a24af96fae27d2066ba.r2.dev/' + user.image} alt="image">
+              {/if}
             {:else}
               <img class="h-auto max-w-full rounded-lg" src={noImage} alt="noimage">
             {/if}

@@ -7,6 +7,7 @@
 	import '@fortawesome/fontawesome-free/css/solid.css';
 	import { AppBar, AppShell, Avatar, LightSwitch } from '@skeletonlabs/skeleton'
 	import { page } from '$app/stores'
+	import noImage from '$lib/images/noImage.jpg'
 </script>
 
 <AppShell>
@@ -17,12 +18,25 @@
 				{#if $page.data.session?.user}
 					<a href="/users">ユーザー一覧</a>
 					<a href={"/users/" + $page.data.session.user.id}>
-						<Avatar
-							src={$page.data.session.user.image}
-							border="border-4 border-surface-300-600-token hover:!border-primary-500"
-							cursor="cursor-pointer"
-							width="w-12"
-						/>
+						{#if $page.data.session?.user.image}
+              {#if $page.data.session?.user.image.startsWith("https://")}
+								<Avatar
+									src={$page.data.session.user.image}
+									border="border-4 border-surface-300-600-token hover:!border-primary-500"
+									cursor="cursor-pointer"
+									width="w-12"
+								/>
+              {:else}
+								<Avatar
+									src={'https://pub-02e9c1cb43104a24af96fae27d2066ba.r2.dev/' + $page.data.session.user.image}
+									border="border-4 border-surface-300-600-token hover:!border-primary-500"
+									cursor="cursor-pointer"
+									width="w-12"
+								/>
+              {/if}
+            {:else}
+              <img class="h-auto max-w-full rounded-lg" src={noImage} alt="noimage">
+            {/if}
 					</a>
 				{:else}
 					<a href="/sign_in" class="btn">ログイン</a>

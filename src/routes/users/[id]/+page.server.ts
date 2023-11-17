@@ -19,11 +19,20 @@ export const actions = {
     const data = await request.formData();
     const name = data.get("name")
     const description = data.get("description")
+    const fileName = data.get("fileName")
 
-    const { results } = await platform.env.DB.prepare(
-      "UPDATE users SET name = ?, description = ? WHERE id = ?"
-    ).bind(name, description, params.id)
-    .all();
-    return results;
-	}
+    if (fileName) {
+      await platform.env.DB.prepare(
+        "UPDATE users SET name = ?, description = ?, image = ? WHERE id = ?"
+      ).bind(name, description, fileName, params.id)
+      .all()
+    } else {
+      await platform.env.DB.prepare(
+       "UPDATE users SET name = ?, description = ? WHERE id = ?"
+     ).bind(name, description, params.id)
+     .all()
+    }
+
+    return { success: true }
+  }
 };

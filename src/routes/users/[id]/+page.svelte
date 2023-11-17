@@ -4,6 +4,42 @@
   export let data
   const user = data.user
   const readonly = data.readonly
+
+  const handleFileUpload = async (e: Event) => {
+		const target = e.target as HTMLInputElement;
+		const file = target.files?.[0];
+
+		if (file) {
+			const getPresignedUrlResponse = await fetch('/api/upload', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					fileName: file.name,
+					fileType: file.type
+				})
+			});
+
+			if (!getPresignedUrlResponse.ok) {
+				console.error('Failed to get presigned URL');
+			}
+
+			const { presignedUrl, objectKey } = await getPresignedUrlResponse.json();
+      const uploadToR2Response = await fetch(presignedUrl, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': file.type
+				},
+				body: file
+			});
+
+      console.log("event:", e)
+      if (!uploadToR2Response.ok) {
+        console.error('Failed to upload file to R2');
+      }
+		}
+	};
 </script>
 
 <div class="overflow-hidden shadow rounded-lg">
@@ -18,7 +54,7 @@
               <img class="h-auto max-w-full rounded-lg" src={noImage} alt="noimage">
             {/if}
           </div>
-        <input id="image" name="image" class="input" type="file" readonly={readonly} />
+        <input id="image" name="image" class="input" type="file" readonly={readonly} on:change={handleFileUpload} />
       </label>
       <hr />
       <label for="name" class="label px-4 py-5 sm:px-6">

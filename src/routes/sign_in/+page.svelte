@@ -24,4 +24,14 @@
       <span>Google</span>
     </button>
   </div>
+  <aside class="alert variant-filled-warning">
+    <div><i class="fas fa-exclamation-triangle"></i></div>
+    <div class="alert-message">
+        <h3 class="h3">認証に関する注意事項</h3>
+        <p>
+          ２回目のログインをする場合は、最初に認証したサービスと同じサービスを選択してください。<br />
+          別のサービスでログインした場合、最初に認証したサービスと違うメールアドレスだった場合、新規登録となります。同じメールアドレスだった場合はエラーになります。
+        </p>
+    </div>
+  </aside>
 {/if}

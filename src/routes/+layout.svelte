@@ -10,6 +10,11 @@
 	import noImage from '$lib/images/noImage.jpg'
 </script>
 
+<svelte:head>
+	<title>TECH-TECH APP</title>
+	<meta name="description" content="TECH-TECH KOCHの自己紹介を残すためのアプリです" />
+</svelte:head>
+
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">

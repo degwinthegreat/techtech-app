@@ -13,7 +13,7 @@ const users = data.users
           {#if image.startsWith("https://")}
             <Avatar src={image} width="w-12" />
           {:else}
-            <Avatar src={'https://pub-02e9c1cb43104a24af96fae27d2066ba.r2.dev/' + user.image} width="w-12" />
+            <Avatar src={'https://pub-02e9c1cb43104a24af96fae27d2066ba.r2.dev/' + image} width="w-12" />
           {/if}
         {:else}
           <Avatar src={noImage} width="w-12" />

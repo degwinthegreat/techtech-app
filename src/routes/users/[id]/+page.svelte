@@ -92,8 +92,13 @@
         <span>🔖タグ</span>
         <InputChip bind:value={list} name="tags" transitions={true} placeholder="..." readonly={readonly}/>
       </label> -->
-      <button class="btn variant-filled-success">更新</button>
+
+      {#if !readonly}
+        <button class="btn variant-filled-success">更新</button>
+      {/if}
     </form>
-    <button class="btn variant-filled-error" on:click={signOut}>ログアウト</button>
+    {#if !readonly}
+      <button class="btn variant-filled-error" on:click={signOut}>ログアウト</button>
+    {/if}
   </div>
 </div>

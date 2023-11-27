@@ -89,6 +89,7 @@
           name="description"
           class="textarea"
           placeholder="自己紹介を入力してください."
+          rows="10"
           readonly={readonly}
           value="{user.description}"
         />

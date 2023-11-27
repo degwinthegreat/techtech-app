@@ -13,7 +13,7 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-			<svelte:fragment slot="lead"><a href="/">Tech Tech App</a></svelte:fragment>
+			<svelte:fragment slot="lead"><a href="/">TECH-TECH App</a></svelte:fragment>
 			<svelte:fragment slot="trail">
 				{#if $page.data.session?.user}
 					<a href="/users">ユーザー一覧</a>

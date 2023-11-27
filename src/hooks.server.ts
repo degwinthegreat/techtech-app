@@ -20,7 +20,7 @@ export const auth = SvelteKitAuth(async (event) => {
         clientId: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
       }),
-      Facebook({ clientId: FACEBOOK_CLIENT_ID, clientSecret: FACEBOOK_CLIENT_SECRET }),
+      // Facebook({ clientId: FACEBOOK_CLIENT_ID, clientSecret: FACEBOOK_CLIENT_SECRET }),
     ],
     callbacks: {
       session: async ({ session, user }) => {

@@ -4,8 +4,9 @@ import type { Handle } from '@sveltejs/kit'
 import { SvelteKitAuth } from "@auth/sveltekit"
 import GitHub from "@auth/core/providers/github"
 import Google from "@auth/core/providers/google"
+import Facebook from "@auth/core/providers/facebook"
 import { D1Adapter } from "$lib/auth/d1"
-import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from "$env/static/private"
+import { AUTH_SECRET, GITHUB_ID, GITHUB_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET } from "$env/static/private"
 
 export const auth = SvelteKitAuth(async (event) => {
   console.log(event.platform?.env.DB)
@@ -18,7 +19,9 @@ export const auth = SvelteKitAuth(async (event) => {
       Google({
         clientId: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-  })],
+      }),
+      Facebook({ clientId: FACEBOOK_CLIENT_ID, clientSecret: FACEBOOK_CLIENT_SECRET }),
+    ],
     callbacks: {
       session: async ({ session, user }) => {
         if (session.user) {

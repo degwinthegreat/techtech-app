@@ -23,6 +23,10 @@
       <span><i class="fa-brands fa-google"></i></span>
       <span>Google</span>
     </button>
+        <button class="logo-item" on:click={() => signIn('facebook', { callbackUrl: '/users' })}>
+      <span><i class="fa-brands fa-facebook"></i></span>
+      <span>Facebook</span>
+    </button>
   </div>
   <aside class="alert variant-filled-warning">
     <div><i class="fas fa-exclamation-triangle"></i></div>

@@ -84,7 +84,14 @@
       <hr />
       <label for="description" class="labe px-4 py-5 sm:px-6">
         <span>✏️自己紹介</span>
-        <textarea id="description" name="description" class="textarea" rows="4" placeholder="自己紹介を入力してください." readonly={readonly} value="{user.description}" />
+        <textarea
+          id="description"
+          name="description"
+          class="textarea"
+          placeholder="自己紹介を入力してください."
+          readonly={readonly}
+          value="{user.description}"
+        />
       </label>
       <hr />
       <!-- TODO -->
